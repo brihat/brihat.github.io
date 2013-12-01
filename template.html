@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>$if(title-prefix)$$title-prefix$ - $endif$$pagetitle$</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+$for(author-meta)$
+<meta name="author" content="$author-meta$" />
+$endfor$
+$if(date-meta)$
+<meta name="dcterms.date" content="$date-meta$" />
+$endif$
+<style type="text/css">code{white-space: pre;}</style>
+<!--[if lt IE 9]>
+   <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+$for(css)$
+<link rel="stylesheet" href="$css$" $if(html5)$$else$type="text/css" $endif$ media="all"/>
+$endfor$
+<!--[if lt IE 6]>  <link rel="stylesheet" type="text/css" href="ie.css" />  <![endif]-->
+<!--[if lt IE 7]>  <link rel="stylesheet" type="text/css" href="ie.css" />  <![endif]-->
+<!--[if IE 7]>  <link rel="stylesheet" type="text/css" href="ie.css" />  <![endif]-->
+$if(math)$
+$math$
+$endif$
+$for(header-includes)$
+$header-includes$
+$endfor$
+</head>
+  <body>
+  <div id="container">
+    $for(include-before)$
+    $include-before$
+    $endfor$
+    $if(toc)$
+    <div id="$idprefix$TOC">
+      $toc$
+    </div>
+    $endif$
+    <div id="content">
+      $body$
+    </div> <!-- content -->
+    $for(include-after)$
+    $include-after$
+    $endfor$
+  </div> <!-- container -->
+  </body>
+</html>
