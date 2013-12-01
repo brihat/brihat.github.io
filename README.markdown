@@ -1,7 +1,3 @@
-% README
-% Brihat
-% December 1, 2013
-
 README
 ======
 

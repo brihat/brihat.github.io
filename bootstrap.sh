@@ -1,8 +1,8 @@
 #! /bin/bash
 
-PANDOC="pandoc --smart -f markdown --standalone  --template=template.html \
-       --css=/css/style.css --include-before-body=./header.html \
-       --include-after-body=./footer.html"
+PANDOC="pandoc --smart -f markdown --standalone  --template=./_template.html \
+       --css=/css/style.css --include-before-body=./_header.html \
+       --include-after-body=./_footer.html"
 
 for file in $(find . -type f -name "*.md"); do
     html="${file%.md}.html"
@@ -14,4 +14,7 @@ done
 #
 # The special variables are described here:
 # http://johnmacfarlane.net/pandoc/demo/example9/templates.html
+#
+# This bash script was inspired by
+# https://github.com/wcaleb/website/blob/master/pansite.sh
 #
