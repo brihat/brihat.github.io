@@ -43,7 +43,7 @@ body {
 #container {
         margin: 0;
         margin: 0px auto;
-        width: 900px;
+        width: 800px;
 }
 #header {
         margin-top: -35px;
@@ -63,7 +63,7 @@ body {
         border-left: solid #DBDAD5 1px;
         border-right: solid #DBDAD5 1px;
         border-bottom: solid #DBDAD5 1px;
-        width: 900px;
+        width: 800px;
         height: 35px;
         text-align: right;
 }
@@ -115,7 +115,7 @@ ul.menu li.current_page_item a:active {
 #content {
         float: left;
         margin-left: 25px;
-        width: 850px; /* 900px - 25 left - 25 right */
+        width: 7500px; /* 800px - 25 left - 25 right */
         text-align: justify;
 }
 #content  h1 {color: #405B5B;}
