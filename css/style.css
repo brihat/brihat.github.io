@@ -9,28 +9,27 @@
   font-family: 'Noto Sans';
   font-style: normal;
   font-weight: 400;
-  src: local('Noto Sans'), local('NotoSans'), url(NotoSans-Regular.woff) format('woff');
-}
-
-@font-face {
-  font-family: 'Noto Sans Bold';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Noto Sans Bold'), local('NotoSans-Bold'), url(NotoSans-Bold.woff) format('woff');
+  src: local('Noto Sans'), local('NotoSans'),
+       url(NotoSans-Regular.woff) format('woff'),
+       url(NotoSans-Regular.ttf) format('truetype');
 }
 
 @font-face {
   font-family: 'Noto Sans Devanagari';
   font-style: normal;
   font-weight: 400;
-  src: local('Noto Sans Devanagari'), local('NotoSansDevanagari'), url(NotoSansDevanagari-Regular.woff) format('woff');
+  src: local('Noto Sans Devanagari'), local('NotoSansDevanagari'),
+       url(NotoSansDevanagari-Regular.woff) format('woff'),
+       url(NotoSansDevanagari-Regular.ttf) format('truetype');
 }
 
 @font-face {
   font-family: 'Noto Sans Kannada';
   font-style: normal;
   font-weight: 400;
-  src: local('Noto Sans Kannada'), local('NotoSansKannada'), url(NotoSansKannada-Regular.woff) format('woff');
+  src: local('Noto Sans Kannada'), local('NotoSansKannada'),
+       url(NotoSansKannada-Regular.woff) format('woff'),
+       url(NotoSansKannada-Regular.ttf) format('truetype');
 }
 
 
