@@ -15,6 +15,10 @@ $endif$
 <!--[if lt IE 9]>
    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
+<script type='text/javascript'>
+  var isIE = typeof document.documentMode == "number" ? !0 : eval("/*@cc_on!@*/!1");
+  if (isIE) { alert("THIS WEBSITE MAY NOT WORK ON IE. TRY FIREFOX OR CHROME!!"); }
+</script>
 $for(css)$
 <link rel="stylesheet" href="$css$" $if(html5)$$else$type="text/css" $endif$ media="all"/>
 $endfor$
