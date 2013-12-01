@@ -44,7 +44,7 @@ body {
 #container {
         margin: 0;
         margin: 0px auto;
-        width: 800px;
+        width: 900px;
 }
 #header {
         margin-top: -35px;
@@ -64,7 +64,7 @@ body {
         border-left: solid #DBDAD5 1px;
         border-right: solid #DBDAD5 1px;
         border-bottom: solid #DBDAD5 1px;
-        width: 800px;
+        width: 900px;
         height: 35px;
         text-align: right;
 }
@@ -105,10 +105,6 @@ ul.menu li.current_page_item a:active {
                 font-weight: bold;
 }
 
-#content {
-        width: 800px;
-}
-
 #content .commentbox {
         color: #918E85;
         background-color: #FBF4E2;
@@ -119,7 +115,8 @@ ul.menu li.current_page_item a:active {
 
 #content {
         float: left;
-        width: 800px;
+        margin-left: 25px;
+        width: 850px; /* 900px - 25 left - 25 right */
         text-align: justify;
 }
 #content  h1 {color: #405B5B;}
