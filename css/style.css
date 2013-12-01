@@ -4,15 +4,39 @@
    The website no longer exists, but the theme can be found at free-css.com
 */
 
-/* use Andika - Regular in .woff format */
+/* Sanskrit (Devanagari), Kannada and Latin fonts */
 @font-face {
-  font-family: AndikaW;
-  src: url(Andika-R.woff);
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Noto Sans'), local('NotoSans'), url(NotoSans-Regular.woff) format('woff');
 }
+
+@font-face {
+  font-family: 'Noto Sans Bold';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Noto Sans Bold'), local('NotoSans-Bold'), url(NotoSans-Bold.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Noto Sans Devanagari';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Noto Sans Devanagari'), local('NotoSansDevanagari'), url(NotoSansDevanagari-Regular.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Noto Sans Kannada';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Noto Sans Kannada'), local('NotoSansKannada'), url(NotoSansKannada-Regular.woff) format('woff');
+}
+
 
 body {
         margin: 0;
-        font-family: AndikaW, "Trebuchet MS", sans-serif;
+        font-family: 'Noto Sans', 'Noto Sans Devanagari', 'Noto Sans Kannada', sans-serif;
         color: #3A3838;
         font-size: 12pt;
         text-align: justify;

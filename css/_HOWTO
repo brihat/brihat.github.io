@@ -1,0 +1,17 @@
+Devanagari and Kannada fonts are directly downloadable from here: https://www.google.com/fonts/earlyaccess
+
+For NotoSans: 
+https://www.google.com/fonts#UsePlace:use/Collection:Noto+Sans
+
+Choose the charsets you need (probably untick Greek & Cyrillic)
+
+The following opens a CSS file
+  http://fonts.googleapis.com/css?family=Noto+Sans&subset=latin,latin-ext
+
+From the above URL you'll get another URL for the .woff font!
+Just download it and put it :)
+
+BUT: Note that NotoSans doesn't have Latin Extended Additional,
+     but it has all the combining diacritics. So, in emacs,
+        M-x ucs-normalize-NFD-region
+     and then it works
