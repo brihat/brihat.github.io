@@ -5,7 +5,7 @@
 ABCD -- a better cd
 ===================
 
-Unix's builtin `cd` command has a very nice feature:
+Unix's builtin `cd` command has a very nice feature, "cd minus":
 
 ```
 cd -
@@ -13,22 +13,24 @@ cd -
    Same as: cd "$OLDPWD"
 ```
 
-I wanted to extend this functionality, such that:
+Let's make `cd` better. Let's extend this functionality, such that:
 
-
-```
-cd --
-   Go back two directories previous to the current one.
-
-cd ---
-   Go back three directories previous to the current one.
-```
+-------   -------------------------------------------------------
+`cd --`   Go back two directories previous to the current one.
+`cd ---`  Go back three directories previous to the current one.
+-------   -------------------------------------------------------
 
 Why stop there? How about `cd -4`, `cd -5` and so on?
-To implement this, let's make use of bash's building blocks:
-`pushd` and `popd`.
+In the process, of course we want to be backwards-compatible with
+the fundamental properties of `cd`:
 
-Here it is how to do it:
+-------   ---------------------------------
+`cd DIR`  Change to directory DIR
+`cd`      Change to $HOME. Same as `cd ~`
+-------   ---------------------------------
+
+To implement this, let's make use of bash's building blocks:
+`pushd` and `popd`. Here it is how to do it:
 
 ```shell
 function cd()  {
@@ -55,5 +57,25 @@ function cd()  {
 }
 
 ```
+
+You can simply copy-paste the above in your `~/.bashrc` for example.
+
+Examples
+---------
+
+Also mention dirs -v and dirs -c
+
+
+How does the code work
+----------------------
+
+Caveats
+-------
+
+1. `cd` takes two options,  `-L` and `-P`, related to symlink-following (or not).
+   The above code does not consider that. It always follows symlinks, just like the
+   default behavior of `cd`.
+2. If you have turned on `autocd` option of Bash v4 (and later), the our own `cd`
+   is not triggered. It uses the builtin `cd` always.
 
 

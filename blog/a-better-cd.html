@@ -36,18 +36,37 @@
             </div> <!-- navigation -->
                 <div id="content">
       <h1 id="abcd-a-better-cd">ABCD – a better cd</h1>
-      <p>Unix’s builtin <code>cd</code> command has a very nice feature:</p>
+      <p>Unix’s builtin <code>cd</code> command has a very nice feature, “cd minus”:</p>
       <pre><code>cd -
          Go back to the direcotry previous to the current one.
          Same as: cd &quot;$OLDPWD&quot;</code></pre>
-      <p>I wanted to extend this functionality, such that:</p>
-      <pre><code>cd --
-         Go back two directories previous to the current one.
-      
-      cd ---
-         Go back three directories previous to the current one.</code></pre>
-      <p>Why stop there? How about <code>cd -4</code>, <code>cd -5</code> and so on? To implement this, let’s make use of bash’s building blocks: <code>pushd</code> and <code>popd</code>.</p>
-      <p>Here it is how to do it:</p>
+      <p>Let’s make <code>cd</code> better. Let’s extend this functionality, such that:</p>
+      <table>
+      <tbody>
+      <tr class="odd">
+      <td align="left"><code>cd --</code></td>
+      <td align="left">Go back two directories previous to the current one.</td>
+      </tr>
+      <tr class="even">
+      <td align="left"><code>cd ---</code></td>
+      <td align="left">Go back three directories previous to the current one.</td>
+      </tr>
+      </tbody>
+      </table>
+      <p>Why stop there? How about <code>cd -4</code>, <code>cd -5</code> and so on? In the process, of course we want to backwards-compattible with the fundamental properties of <code>cd</code>:</p>
+      <table>
+      <tbody>
+      <tr class="odd">
+      <td align="left"><code>cd DIR</code></td>
+      <td align="left">Change to directory DIR</td>
+      </tr>
+      <tr class="even">
+      <td align="left"><code>cd</code></td>
+      <td align="left">Change to $HOME. Same as <code>cd ~</code></td>
+      </tr>
+      </tbody>
+      </table>
+      <p>To implement this, let’s make use of bash’s building blocks: <code>pushd</code> and <code>popd</code>. Here it is how to do it:</p>
       <pre class="shell"><code>function cd()  {
           local dir=&quot;$1&quot;;  local old=()
           [[ -z &quot;$dir&quot; ]] &amp;&amp; dir=&quot;$HOME&quot;
@@ -71,6 +90,15 @@
           fi
       }
       </code></pre>
+      <p>You can simply copy-paste the above in your <code>~/.bashrc</code> for example.</p>
+      <h2 id="examples">Examples</h2>
+      <p>Also mention dirs -v and dirs -c</p>
+      <h2 id="how-does-the-code-work">How does the code work</h2>
+      <h2 id="caveats">Caveats</h2>
+      <ol style="list-style-type: decimal">
+      <li><code>cd</code> takes two options, <code>-L</code> and <code>-P</code>, related to symlink-following (or not). The above code does not consider that. It always follows symlinks, just like the default behavior of <code>cd</code>.</li>
+      <li>If you have turned on <code>autocd</code> option of Bash v4 (and later), the our own <code>cd</code> is not triggered. It uses the builtin <code>cd</code> always.</li>
+      </ol>
     </div> <!-- content -->
         <div id="footer"><a href="/blog/copyright.html">Copyright notice</a></div>
           </div> <!-- container -->
