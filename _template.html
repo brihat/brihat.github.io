@@ -17,8 +17,10 @@ $endif$
 <![endif]-->
 <script type='text/javascript'>
   var isIE = typeof document.documentMode == "number" ? !0 : eval("/*@cc_on!@*/!1");
-  if (isIE) { alert("THIS WEBSITE MAY NOT WORK ON IE. TRY FIREFOX OR CHROME!!"); }
+  if (isIE) { alert("THIS POP-UP KEEPS APPEARING AS LONG AS YOU USE INTERNET EXPLORER!\n
+                     TRY MOZILLA FIREFOX OR GOOGLE CHROME!!"); }
 </script>
+<script src="/script/rainbow-custom.min.js"></script>
 $for(css)$
 <link rel="stylesheet" href="$css$" $if(html5)$$else$type="text/css" $endif$ media="all"/>
 $endfor$

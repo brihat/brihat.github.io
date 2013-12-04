@@ -1,11 +1,13 @@
 #! /bin/bash
 
 PANDOC="pandoc --smart -f markdown --standalone  --template=./_template.html \
-       --css=/css/style.css --include-before-body=./_header.html \
+       --css=/css/style.css --css=/css/github.css \
+       --include-before-body=./_header.html \
        --include-after-body=./_footer.html"
 
 for file in $(find . -type f -name "*.md"); do
     html="${file%.md}.html"
+    echo "Processing $file"
     eval "$PANDOC" -o "$html" "$file"
 done
 

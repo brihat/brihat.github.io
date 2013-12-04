@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Blog roll</title>
+<title>ABCD – a better cd</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
@@ -35,8 +35,42 @@
               </ul>
             </div> <!-- navigation -->
                 <div id="content">
-      <h1 id="all-posts">All Posts</h1>
-      <p>New articles shall be forthcoming.</p>
+      <h1 id="abcd-a-better-cd">ABCD – a better cd</h1>
+      <p>Unix’s builtin <code>cd</code> command has a very nice feature:</p>
+      <pre><code>cd -
+         Go back to the direcotry previous to the current one.
+         Same as: cd &quot;$OLDPWD&quot;</code></pre>
+      <p>I wanted to extend this functionality, such that:</p>
+      <pre><code>cd --
+         Go back two directories previous to the current one.
+      
+      cd ---
+         Go back three directories previous to the current one.</code></pre>
+      <p>Why stop there? How about <code>cd -4</code>, <code>cd -5</code> and so on? To implement this, let’s make use of bash’s building blocks: <code>pushd</code> and <code>popd</code>.</p>
+      <p>Here it is how to do it:</p>
+      <pre class="shell"><code>function cd()  {
+          local dir=&quot;$1&quot;;  local old=()
+          [[ -z &quot;$dir&quot; ]] &amp;&amp; dir=&quot;$HOME&quot;
+          [[ &quot;$dir&quot; == &quot;-&quot; ]] &amp;&amp; dir=-1
+          [[ &quot;$dir&quot; == &quot;--&quot; ]] &amp;&amp; dir=-2
+          [[ &quot;$dir&quot; == &quot;---&quot; ]] &amp;&amp; dir=-3
+          local head=&quot;${dir:0:1}&quot;   # first char of $dir
+          if [[ &quot;$head&quot; == &quot;-&quot; ]]; then
+              while [[ &quot;$dir&quot; -lt 0 ]]; do
+                  old+=(`pwd`)
+                  popd &gt; /dev/null
+                  let dir=dir+1
+              done
+              for (( idx=&quot;${#old[@]}&quot;-1 ; idx&gt;=0 ; idx-- )); do
+                  pushd -n &quot;${old[idx]}&quot; &gt; /dev/null
+              done
+          elif [[ &quot;$head&quot; == &quot;+&quot; ]]; then
+              popd &quot;$dir&quot; &gt; /dev/null
+          else
+              pushd &quot;$dir&quot; &gt; /dev/null
+          fi
+      }
+      </code></pre>
     </div> <!-- content -->
         <div id="footer"><a href="/blog/copyright.html">Copyright notice</a></div>
           </div> <!-- container -->
